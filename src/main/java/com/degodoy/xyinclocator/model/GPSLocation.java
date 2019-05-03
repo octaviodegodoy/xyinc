@@ -12,6 +12,7 @@ public class GPSLocation {
 	@Id
 	@GeneratedValue
 	private long id;
+	private String name;
 	private int coord_x;
 	private int coord_y;
 	
@@ -19,11 +20,15 @@ public class GPSLocation {
 		
 	}
 	
-	public GPSLocation(int coord_x, int coord_y) {
+	
+	public GPSLocation(String name, int coord_x, int coord_y) {
 		super();
+		this.name = name;
 		this.coord_x = coord_x;
 		this.coord_y = coord_y;
 	}
+
+
 	public long getId() {
 		return id;
 	}
@@ -41,6 +46,16 @@ public class GPSLocation {
 	}
 	public void setCoord_y(int coord_y) {
 		this.coord_y = coord_y;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
