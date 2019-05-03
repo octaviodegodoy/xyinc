@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-// Table - USER
+// Table - GPSLocation
 
 @Entity
 public class GPSLocation {

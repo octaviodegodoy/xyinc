@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.degodoy.xyinclocator.model.GPSLocation;
 
+
+
 @Repository
 @Transactional
 public class GPSLocationDAOService {
