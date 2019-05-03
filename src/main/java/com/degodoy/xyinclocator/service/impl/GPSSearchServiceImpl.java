@@ -9,7 +9,7 @@ public class GPSSearchServiceImpl implements GPSSearchService {
 	
 	public String getSearchAround(int distance) {
 		
-		return "Seu Menino!!";
+		return "Resposta aqui !!";
 	}
 
 }
