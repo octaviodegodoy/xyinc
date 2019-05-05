@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.degodoy.xyinclocator.GPSLocationRepository;
 import com.degodoy.xyinclocator.model.GPSLocation;
+import com.degodoy.xyinclocator.service.CadastrarPOIService;
 import com.degodoy.xyinclocator.service.GPSSearchService;
 
 
@@ -22,6 +23,9 @@ public class GPSLocationController {
 	
 	@Autowired
 	private GPSSearchService gpsSearchService;
+	
+	@Autowired
+	private CadastrarPOIService cadastrarPOIService;
 	
 	@GetMapping("/gpslocation")
 	public List<GPSLocation> getAllLocations(){
@@ -38,6 +42,19 @@ public class GPSLocationController {
 		}
 		
 		return null;
+	
+	}
+	
+	@PostMapping("/insertLocation")
+	public boolean insertLocation(@RequestBody GPSLocation gpsLoc){
+		
+		if (gpsLoc != null) {
+			if ((gpsLoc.getCoord_x() >= 0 ) && (gpsLoc.getCoord_y() >= 0)) {
+				return cadastrarPOIService.insertPOI(gpsLoc.getName(), gpsLoc.getCoord_x(), gpsLoc.getCoord_y());
+			}
+		}
+		
+		return false;
 	
 	}
 	
