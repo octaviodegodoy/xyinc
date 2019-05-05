@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,28 +35,35 @@ public class GPSLocationController {
 	}
 	
 	@GetMapping("/searchAround")
-	public List<String> searchAround(@RequestBody Location loc){
+	public ResponseEntity<List<String>> searchAround(@RequestBody Location loc){
 		
 		if (loc != null) {
 			if ((loc.x >= 0 ) && (loc.y >= 0)) {
-				return gpsSearchService.getSearchAround(loc.x,loc.y,loc.dMax);
+				
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(gpsSearchService.getSearchAround(loc.x,loc.y,loc.dMax));
+				 
 			}
 		}
 		
-		return null;
+		return 	ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(null);
 	
 	}
 	
 	@PostMapping("/insertLocation")
-	public boolean insertLocation(@RequestBody GPSLocation gpsLoc){
+	public ResponseEntity<Boolean> insertLocation(@RequestBody GPSLocation gpsLoc){
 		
 		if (gpsLoc != null) {
 			if ((gpsLoc.getCoord_x() >= 0 ) && (gpsLoc.getCoord_y() >= 0)) {
-				return cadastrarPOIService.insertPOI(gpsLoc.getName(), gpsLoc.getCoord_x(), gpsLoc.getCoord_y());
+				
+				ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(cadastrarPOIService.insertPOI(gpsLoc.getName(), gpsLoc.getCoord_x(), gpsLoc.getCoord_y()));
 			}
 		}
 		
-		return false;
+		return 	ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(false);
 	
 	}
 	
