@@ -33,7 +33,7 @@ public class GPSLocationController {
 		
 		if (loc != null) {
 			if ((loc.x >= 0 ) && (loc.y >= 0)) {
-				return gpsSearchService.getSearchAround(loc.x,loc.y);
+				return gpsSearchService.getSearchAround(loc.x,loc.y,loc.dMax);
 			}
 		}
 		

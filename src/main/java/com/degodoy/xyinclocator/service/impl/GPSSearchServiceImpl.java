@@ -16,17 +16,19 @@ public class GPSSearchServiceImpl implements GPSSearchService {
 	@Autowired
 	private GPSLocationRepository gpsRepository;
 	
-	public List<String> getSearchAround(int xLocal, int yLocal) {
+	public List<String> getSearchAround(int xLocal, int yLocal, int dMax) {
 		
-		final double maxDistance = Math.hypot(xLocal, yLocal);
+		final double local = Math.hypot(xLocal, yLocal);
     	   	
       	List<GPSLocation> gpsLocations = gpsRepository.findAll();
     	
     	List<String> filteredLocations	 = new ArrayList<>();
     	
     	for(GPSLocation loc : gpsLocations) {
-    		double distance = Math.hypot(loc.getCoord_x(), loc.getCoord_y());
-    		if (distance <= maxDistance) {
+    		double xDistance = loc.getCoord_x()-xLocal;
+    	    double yDistance = loc.getCoord_y()-yLocal;
+    		double distance = Math.hypot(xDistance, yDistance);
+    		if ((distance) <= (dMax)) {
     			filteredLocations.add(loc.getName());
     		}
     	}

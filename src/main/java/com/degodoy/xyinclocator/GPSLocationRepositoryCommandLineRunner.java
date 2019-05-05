@@ -29,10 +29,10 @@ public class GPSLocationRepositoryCommandLineRunner implements CommandLineRunner
 		GPSLocation gpsLocation2 = new GPSLocation("Posto",31, 18);
 		gpsLocationRepository.save(gpsLocation2);
 		log.info("New GPS location is created : " + gpsLocation2);
-		GPSLocation gpsLocation3 = new GPSLocation("Joalheria",19, 21);
+		GPSLocation gpsLocation3 = new GPSLocation("Joalheria",15, 12);
 		gpsLocationRepository.save(gpsLocation3);
 		log.info("New GPS location is created : " + gpsLocation3);
-		GPSLocation gpsLocation4 = new GPSLocation("Floricultura",27, 38);
+		GPSLocation gpsLocation4 = new GPSLocation("Floricultura",19, 21);
 		gpsLocationRepository.save(gpsLocation4);
 		log.info("New GPS location is created : " + gpsLocation4);
 		GPSLocation gpsLocation5 = new GPSLocation("Pub",12, 8);
@@ -45,10 +45,7 @@ public class GPSLocationRepositoryCommandLineRunner implements CommandLineRunner
 		gpsLocationRepository.save(gpsLocation7);
 		log.info("New GPS location is created : " + gpsLocation7);
 
-		Optional<GPSLocation> gpsOne = gpsLocationRepository.findById(1L);
-		
-		List<GPSLocation> gpsLocations = gpsLocationRepository.findAll();
-		log.info("All GPS locations : " + gpsLocations);
+	
 		
 	}
 	
