@@ -23,7 +23,7 @@ URL para inserir localidade :
 
 http://localhost:8080/insertLocation
 
-# Para buscar estabelecimentos na area com uma distância máxima
+# Para buscar estabelecimentos na área com uma distância máxima
 
 Exemplo JSON no body :
 {
