@@ -32,7 +32,7 @@ public class GPSLocationController {
 		return gpsLocationRepository.findAll();
 	}
 	
-	@PostMapping("/searchAround")
+	@GetMapping("/searchAround")
 	public List<String> searchAround(@RequestBody Location loc){
 		
 		if (loc != null) {
