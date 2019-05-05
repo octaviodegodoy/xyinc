@@ -11,6 +11,7 @@ public class XyincLocatorApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		
 	}
 
 }

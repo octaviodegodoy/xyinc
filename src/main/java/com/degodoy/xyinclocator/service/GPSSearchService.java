@@ -1,7 +1,9 @@
 package com.degodoy.xyinclocator.service;
 
+import java.util.List;
+
 public interface GPSSearchService {
 	
-	String getSearchAround(int distance);
+	List<String> getSearchAround(int xLocal, int yLocal); 
 
 }

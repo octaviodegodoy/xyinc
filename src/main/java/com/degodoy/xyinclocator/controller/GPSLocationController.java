@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.degodoy.xyinclocator.GPSLocationRepository;
@@ -26,10 +28,16 @@ public class GPSLocationController {
 		return gpsLocationRepository.findAll();
 	}
 	
-	@GetMapping("/searchAround")
-	public String searchAround(int distance){
+	@PostMapping("/searchAround")
+	public List<String> searchAround(@RequestBody Location loc){
 		
-		return gpsSearchService.getSearchAround(distance);
+		if (loc != null) {
+			if ((loc.x >= 0 ) && (loc.y >= 0)) {
+				return gpsSearchService.getSearchAround(loc.x,loc.y);
+			}
+		}
+		
+		return null;
 	
 	}
 	
