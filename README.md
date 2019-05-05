@@ -23,9 +23,7 @@ URL para inserir localidade :
 
 http://localhost:8080/insertLocation
 
-
-
-# Para buscar estabelecimentos na area 
+# Para buscar estabelecimentos na area com uma distância máxima
 
 Exemplo JSON no body :
 {
@@ -37,8 +35,6 @@ Exemplo JSON no body :
 URL para busca :
 
 http://localhost:8080/searchAround
-
-
 
 ### Reference Documentation
 For further reference, please consider the following sections:
