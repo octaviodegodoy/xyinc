@@ -15,6 +15,7 @@ import com.degodoy.xyinclocator.GPSLocationRepository;
 import com.degodoy.xyinclocator.model.GPSLocation;
 import com.degodoy.xyinclocator.service.CadastrarPOIService;
 import com.degodoy.xyinclocator.service.GPSSearchService;
+import com.degodoy.xyinclocator.service.ListarPOIService;
 
 
 @RestController
@@ -25,6 +26,9 @@ public class GPSLocationController {
 	
 	@Autowired
 	private GPSSearchService gpsSearchService;
+	
+	@Autowired
+	private ListarPOIService listarPOIService;
 	
 	@Autowired
 	private CadastrarPOIService cadastrarPOIService;
@@ -40,7 +44,7 @@ public class GPSLocationController {
 		if (loc != null) {
 			if ((loc.x >= 0 ) && (loc.y >= 0)) {
 				
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				return ResponseEntity.status(HttpStatus.ACCEPTED)
 				.body(gpsSearchService.getSearchAround(loc.x,loc.y,loc.dMax));
 				 
 			}
@@ -51,13 +55,21 @@ public class GPSLocationController {
 	
 	}
 	
+	@GetMapping("/listLocations")
+	public ResponseEntity<List<String>> listLocations(){
+		
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+				.body(listarPOIService.getListaPOI());
+
+	}
+	
 	@PostMapping("/insertLocation")
 	public ResponseEntity<Boolean> insertLocation(@RequestBody GPSLocation gpsLoc){
 		
 		if (gpsLoc != null) {
 			if ((gpsLoc.getCoord_x() >= 0 ) && (gpsLoc.getCoord_y() >= 0)) {
 				
-				ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				ResponseEntity.status(HttpStatus.ACCEPTED)
 				.body(cadastrarPOIService.insertPOI(gpsLoc.getName(), gpsLoc.getCoord_x(), gpsLoc.getCoord_y()));
 			}
 		}

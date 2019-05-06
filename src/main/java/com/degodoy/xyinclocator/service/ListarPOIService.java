@@ -6,6 +6,6 @@ import com.degodoy.xyinclocator.model.GPSLocation;
 
 public interface ListarPOIService {
 	
-	List<GPSLocation> getListaPOI();
+	List<String> getListaPOI();
 
 }
